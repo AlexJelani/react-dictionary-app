@@ -18,7 +18,6 @@ const App = () => {
       </Router>
     </ThemeProvider>
     </React.Fragment>
-    
   );
 };
 
