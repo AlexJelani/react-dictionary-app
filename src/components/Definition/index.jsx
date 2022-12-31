@@ -1,5 +1,4 @@
-import React from 'react'
-import Definition from './index';
+
 
 const Definition = () => {
   return (
