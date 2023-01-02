@@ -4,14 +4,18 @@ import {
   Bookmark as BookmarkIcon,
 } from "@mui/icons-material";
 import { useState } from "react";
+import { useNavigate} from "react-router-dom";
 
 const Home = () => {
   const [word, setWord] = useState("");
+  const history = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmedWord = word.trim();
-    if(!trimmedWord && trimmedWord.split('').length > 1) return
+    if(!trimmedWord || trimmedWord.split('').length > 1) return
+    history.push(`/search/${word}`)
+
   }
   return (
     <Box

@@ -18,7 +18,7 @@ const App = () => {
           </Route>
           <Route exact path="/bookmarks" element={<Bookmarks/>}>
           </Route>
-          <Route exact path="/definition" element={<Definition/>}>
+          <Route exact path="/search/:word" element={<Definition/>}>
           </Route>
         </Routes>
       </Router>
