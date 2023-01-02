@@ -7,7 +7,12 @@ import { useState } from "react";
 
 const Home = () => {
   const [word, setWord] = useState("");
-  console.log(word);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmedWord = word.trim();
+    if(!trimmedWord && trimmedWord.split('').length > 1) return
+  }
   return (
     <Box
       sx={{
@@ -32,6 +37,7 @@ const Home = () => {
       </Typography>
       <Typography color="GrayText">Find the meaning quick</Typography>
       <Box sx={{ width: "360px" }}>
+        <form action="" onClick={handleSubmit}>
         <FilledInput
           value={word}
           onChange={(event) => setWord(event.target.value)}
@@ -47,6 +53,7 @@ const Home = () => {
           startAdornment={<SearchIcon color="disabled" />}
           fullWidth
         />
+        </form>
       </Box>
       <IconButton
         sx={{
