@@ -14,7 +14,7 @@ const Home = () => {
     e.preventDefault();
     const trimmedWord = word.trim();
     if (!trimmedWord || trimmedWord.split(" ").length > 1) return;
-    history(`/search/:${word}`);
+    history.push(`/search/:${word}`);
   };
   return (
     <Box
