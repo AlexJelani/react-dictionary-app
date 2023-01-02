@@ -4,19 +4,18 @@ import {
   Bookmark as BookmarkIcon,
 } from "@mui/icons-material";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [word, setWord] = useState("");
-  const history = useNavigate()
+  const history = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmedWord = word.trim();
-    if(!trimmedWord || trimmedWord.split('').length > 1) return
-    history.push(`/search/${word}`)
-
-  }
+    if (!trimmedWord || trimmedWord.split(" ").length > 1) return;
+    history("/search/", { state: { word } });
+  };
   return (
     <Box
       sx={{
@@ -42,21 +41,21 @@ const Home = () => {
       <Typography color="GrayText">Find the meaning quick</Typography>
       <Box sx={{ width: "360px" }}>
         <form action="" onClick={handleSubmit}>
-        <FilledInput
-          value={word}
-          onChange={(event) => setWord(event.target.value)}
-          placeholder="search word"
-          sx={{
-            my: 4,
-            backgroundColor: "white",
-            boxShadow: "0px 10px 25px rgba(0,0,0,0.5)",
-            "& .MuiFilledInput-input": {
-              p: 2,
-            },
-          }}
-          startAdornment={<SearchIcon color="disabled" />}
-          fullWidth
-        />
+          <FilledInput
+            value={word}
+            onChange={(event) => setWord(event.target.value)}
+            placeholder="search word"
+            sx={{
+              my: 4,
+              backgroundColor: "white",
+              boxShadow: "0px 10px 25px rgba(0,0,0,0.5)",
+              "& .MuiFilledInput-input": {
+                p: 2,
+              },
+            }}
+            startAdornment={<SearchIcon color="disabled" />}
+            fullWidth
+          />
         </form>
       </Box>
       <IconButton
