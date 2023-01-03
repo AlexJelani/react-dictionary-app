@@ -14,8 +14,7 @@ const Home = () => {
     e.preventDefault();
     const trimmedWord = word.trim();
     if (!trimmedWord || trimmedWord.split(" ").length > 1) return;
-    //use navigate not working
-    history(`/search/:${word}`);
+    history(`/search/${word}`);
   };
   return (
     <Box
@@ -41,7 +40,7 @@ const Home = () => {
       </Typography>
       <Typography color="GrayText">Find the meaning quick</Typography>
       <Box sx={{ width: "360px" }}>
-        <form action="" onClick={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FilledInput
             value={word}
             onChange={(event) => setWord(event.target.value)}
