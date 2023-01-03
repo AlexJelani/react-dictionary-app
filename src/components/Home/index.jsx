@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const trimmedWord = word.trim().toLocaleLowerCase;
+    const trimmedWord = word.trim().toLowerCase();
     if (!trimmedWord || trimmedWord.split(" ").length > 1) return;
     history(`/search/${word}`);
   };

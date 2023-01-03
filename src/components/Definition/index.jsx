@@ -9,12 +9,12 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const Definition = () => {
   const { word } = useParams();
-  const history = useNavigate();
+  const goBack = useNavigate();
 
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <IconButton onClick={() => navigate(-1)}>
+        <IconButton onClick={() => goBack(-1)}>
           <BackIcon />
         </IconButton>
         <IconButton>
