@@ -7,6 +7,7 @@ import {
 import { border as BookmarkedIcon } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import axios from "axios";
 
 
 const Definition = () => {
@@ -14,7 +15,8 @@ const Definition = () => {
   const goBack = useNavigate();
 
   useEffect(() => {
-    first
+    const resp = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+    console.log(resp.data);
   
     const fetchDefinition = async () => {
       second
