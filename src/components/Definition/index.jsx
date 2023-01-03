@@ -4,9 +4,11 @@ import {
   BookmarkBorder as BookmarkIcon,
 } from "@mui/icons-material";
 import { border as BookmarkedIcon } from "@mui/system";
-
+import { useParams } from "react-router-dom";
 
 const Definition = () => {
+  const {word} = useParams();
+  
   return (
     <>
       <Stack direction="row" justifyContent="space-between">
@@ -17,6 +19,9 @@ const Definition = () => {
           <BookmarkIcon />
         </IconButton>
       </Stack>
+      <Box>
+        <Typography variant="h4">{word}</Typography>
+      </Box>
     </>
   );
 };
