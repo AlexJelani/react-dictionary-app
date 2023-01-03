@@ -1,20 +1,24 @@
-import { Stack, Typography, Box, IconButton } from "@mui/material"
-import { ArrowBack as BackIcon, BookmarkBorder as BookmarkIcon, Border as BookmarkedIcon } from "@mui/icons-material"
+import { Stack, Typography, Box, IconButton } from "@mui/material";
+import {
+  ArrowBack as BackIcon,
+  BookmarkBorder as BookmarkIcon,
+} from "@mui/icons-material";
+import { border as BookmarkedIcon } from "@mui/system";
 
 
 const Definition = () => {
   return (
     <>
-      <Stack>
+      <Stack direction="row" justifyContent="space-between">
         <IconButton>
-          <BackIcon/>
+          <BackIcon />
         </IconButton>
         <IconButton>
-          <BookMarkIcon/>
+          <BookmarkIcon />
         </IconButton>
       </Stack>
     </>
-  )
-}
+  );
+};
 
-export default Definition
+export default Definition;
