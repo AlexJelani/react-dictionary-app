@@ -1,4 +1,4 @@
-import { Stack, Typography, Box, IconButton } from "@mui/material";
+import { Stack, Typography, Box, IconButton, Divider } from "@mui/material";
 import {
   ArrowBack as BackIcon,
   BookmarkBorder as BookmarkIcon,
@@ -6,18 +6,22 @@ import {
 } from "@mui/icons-material";
 import { border as BookmarkedIcon } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState, Fragment } from "react";
 import axios from "axios";
 
 const Definition = () => {
   const { word } = useParams();
   const goBack = useNavigate();
+  const [definitions, setDefinitions] = useState([]);
+
+  console.log(definitions);
 
   useEffect(() => {
     const fetchDefinition = async () => {
       const resp = await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
+      setDefinitions(resp.data);
     };
     fetchDefinition();
   }, []);
@@ -60,6 +64,34 @@ const Definition = () => {
           <PlayIcon />
         </IconButton>
       </Stack>
+
+      {definitions.map((def, idx) => (
+        <Fragment key={idx}>
+          <Divider />
+
+          {def.meanings.map((meaning) => (
+            <Box
+              key={meaning.partOfSpeech}
+              sx={{
+                boxShadow: "Opx 10px 25px rgba(0, 0, 0, 0.5)",
+                backgroundColor: "#fff",
+                p: 2,
+                borderRadius: 2,
+                mt: 3,
+              }}
+            >
+              <Typography variant="subtitle1">
+                {meaning.partOfSpeech}
+              </Typography>
+              {meaning.definitions.map((definition) => (
+                <Typography key={definition}>
+                  {definition.definition}
+                </Typography>
+              ))}
+            </Box>
+          ))}
+        </Fragment>
+      ))}
     </>
   );
 };
