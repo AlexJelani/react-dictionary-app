@@ -9,22 +9,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
-
 const Definition = () => {
   const { word } = useParams();
   const goBack = useNavigate();
 
   useEffect(() => {
-    const resp = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-    console.log(resp.data);
-  
     const fetchDefinition = async () => {
-      second
-    }
-  }, [third])
-  
-
-
+      const resp = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+    };
+    fetchDefinition();
+  }, []);
 
   return (
     <>
