@@ -5,15 +5,16 @@ import {
   PlayArrow as PlayIcon,
 } from "@mui/icons-material";
 import { border as BookmarkedIcon } from "@mui/system";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Definition = () => {
   const { word } = useParams();
+  const history = useNavigate();
 
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <IconButton>
+        <IconButton onClick={() => navigate(-1)}>
           <BackIcon />
         </IconButton>
         <IconButton>
@@ -34,13 +35,15 @@ const Definition = () => {
           borderRadius: 2,
         }}
       >
-        <Typography sx={{textTransform:'capitalize'}} variant="h5">{word}</Typography>
+        <Typography sx={{ textTransform: "capitalize" }} variant="h5">
+          {word}
+        </Typography>
         <IconButton
           sx={{
             borderRadius: 2,
             p: 2,
             color: "#fff",
-            background: theme=> theme.palette.pink,
+            background: (theme) => theme.palette.pink,
           }}
         >
           <PlayIcon />
