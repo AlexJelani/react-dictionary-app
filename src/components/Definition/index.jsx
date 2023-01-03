@@ -6,10 +6,23 @@ import {
 } from "@mui/icons-material";
 import { border as BookmarkedIcon } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 
 const Definition = () => {
   const { word } = useParams();
   const goBack = useNavigate();
+
+  useEffect(() => {
+    first
+  
+    const fetchDefinition = async () => {
+      second
+    }
+  }, [third])
+  
+
+
 
   return (
     <>
