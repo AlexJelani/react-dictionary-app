@@ -9,11 +9,21 @@ export default createTheme({
     primary: {
       main: "#14194C",
     },
+    pink: "linear-gradient(138.72deg, #DC8295 0%, #DC687C 95.83%)",
   },
 
-  MultiTypography: {
-    fontFamily: ["Mulish", "san-serif"],
+  typography: {
+    fontFamily: "Mulish, sans-serif",
     h4: {
+      fontWeight: 800,
+    },
+    h5: {
+      fontWeight: 800,
+    },
+    h6: {
+      fontWeight: 800,
+    },
+    subtitle1: {
       fontWeight: 800,
     },
   },
