@@ -83,8 +83,9 @@ const Definition = () => {
               <Typography variant="subtitle1">
                 {meaning.partOfSpeech}
               </Typography>
-              {meaning.definitions.map((definition) => (
+              {meaning.definitions.map((definition, idx) => (
                 <Typography key={definition}>
+                  {definitions.length > 1 && `${idx + 1}. `}
                   {definition.definition}
                 </Typography>
               ))}
