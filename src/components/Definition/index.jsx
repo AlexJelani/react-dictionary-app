@@ -67,7 +67,7 @@ const Definition = () => {
 
       {definitions.map((def, idx) => (
         <Fragment key={idx}>
-          <Divider />
+          <Divider sx={{ display: idx === 0 ? "none" : "block", my: 5 }} />
 
           {def.meanings.map((meaning) => (
             <Box
