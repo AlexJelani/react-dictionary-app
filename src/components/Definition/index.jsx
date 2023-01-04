@@ -80,12 +80,21 @@ const Definition = () => {
                 mt: 3,
               }}
             >
-              <Typography variant="subtitle1">
+              <Typography
+                sx={{ textTransform: "capitalize" }}
+                color="GrayText"
+                variant="subtitle1"
+              >
                 {meaning.partOfSpeech}
               </Typography>
               {meaning.definitions.map((definition, idx) => (
-                <Typography key={definition}>
-                  {definitions.length > 1 && `${idx + 1}. `}
+                <Typography
+                  sx={{ my: 1 }}
+                  color="GrayText"
+                  variant="body2"
+                  key={definition}
+                >
+                  {meaning.definitions.length > 1 && `${idx + 1}. `}
                   {definition.definition}
                 </Typography>
               ))}
