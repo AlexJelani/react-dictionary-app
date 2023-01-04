@@ -1,4 +1,11 @@
-import { Stack, Typography, Box, IconButton, Divider } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Box,
+  IconButton,
+  Divider,
+  CircularProgress,
+} from "@mui/material";
 import {
   ArrowBack as BackIcon,
   BookmarkBorder as BookmarkIcon,
@@ -13,6 +20,7 @@ const Definition = () => {
   const { word } = useParams();
   const goBack = useNavigate();
   const [definitions, setDefinitions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   console.log(definitions);
 
@@ -22,9 +30,12 @@ const Definition = () => {
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
       setDefinitions(resp.data);
+      setLoading(false);
     };
     fetchDefinition();
   }, []);
+
+  if (loading) return <Box><CircularProgress /></Box>;
 
   return (
     <>
