@@ -1,4 +1,10 @@
-import { Typography, Box, FilledInput, IconButton } from "@mui/material";
+import {
+  Typography,
+  Box,
+  FilledInput,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import {
   Search as SearchIcon,
   Bookmark as BookmarkIcon,
@@ -9,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [word, setWord] = useState("");
   const history = useNavigate();
+  const theme = useTheme();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,15 +24,7 @@ const Home = () => {
     history(`/search/${word}`);
   };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
+    <Box sx={{ ...theme.mixins.alignInTheCenter }}>
       <img src="src/assets/book.png" alt="Book" />
       <Typography
         sx={{
