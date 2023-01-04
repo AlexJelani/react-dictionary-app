@@ -5,10 +5,12 @@ import {
   IconButton,
   Divider,
   CircularProgress,
+  useTheme,
+  Button
 } from "@mui/material";
 import {
   ArrowBack as BackIcon,
-  BookmarkBorder as BookmarkIcon,
+  Bookmark as BookmarkIcon,
   PlayArrow as PlayIcon,
 } from "@mui/icons-material";
 import { border as BookmarkedIcon } from "@mui/system";
@@ -21,21 +23,39 @@ const Definition = () => {
   const goBack = useNavigate();
   const [definitions, setDefinitions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [exist, setExist] = useState(true);
+  const theme = useTheme();
 
   console.log(definitions);
 
   useEffect(() => {
     const fetchDefinition = async () => {
-      const resp = await axios.get(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-      );
-      setDefinitions(resp.data);
-      setLoading(false);
+      try {
+        const resp = await axios.get(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+        );
+        setDefinitions(resp.data);
+        setLoading(false);
+      } catch (error) {
+        setExist();
+      }
     };
     fetchDefinition();
   }, []);
 
-  if (loading) return <Box><CircularProgress /></Box>;
+  if (!exist)
+    return (
+      <Box sx={{ ...theme.mixins.alignInTheCenter }}>
+        <Typography>Word not found</Typography>
+        <Button onClick={() => goBack(-1)}>Go back</Button>
+      </Box>
+    );
+  if (loading)
+    return (
+      <Box sx={{ ...theme.mixins.alignInTheCenter }}>
+        <CircularProgress />
+      </Box>
+    );
 
   return (
     <>
