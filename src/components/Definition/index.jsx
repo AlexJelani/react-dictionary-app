@@ -6,7 +6,7 @@ import {
   Divider,
   CircularProgress,
   useTheme,
-  Button
+  Button,
 } from "@mui/material";
 import {
   ArrowBack as BackIcon,
@@ -47,7 +47,13 @@ const Definition = () => {
     return (
       <Box sx={{ ...theme.mixins.alignInTheCenter }}>
         <Typography>Word not found</Typography>
-        <Button onClick={() => goBack(-1)}>Go back</Button>
+        <Button
+          variant="contained"
+          sx={{ textTransform: "capitalized" }}
+          onClick={() => goBack(-1)}
+        >
+          Go back
+        </Button>
       </Box>
     );
   if (loading)
