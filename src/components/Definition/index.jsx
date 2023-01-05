@@ -67,10 +67,10 @@ const Definition = () => {
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <IconButton onClick={() => goBack(-1)}>
-          <BackIcon />
+          <BackIcon sx={{color:'black'}} />
         </IconButton>
         <IconButton>
-          <BookmarkIcon />
+          <BookmarkIcon sx={{color:'black'}}  />
         </IconButton>
       </Stack>
       <Stack
