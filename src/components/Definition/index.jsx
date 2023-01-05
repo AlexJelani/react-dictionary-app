@@ -87,7 +87,7 @@ const Definition = () => {
           borderRadius: 2,
         }}
       >
-        <Typography sx={{ textTransform: "capitalize" }} variant="h5">
+        <Typography sx={{ textTransform: "capitalize",mt:2 }} variant="h5">
           {word}
         </Typography>
         <IconButton
