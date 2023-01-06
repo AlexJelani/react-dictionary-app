@@ -8,8 +8,15 @@ import Bookmarks from "./components/Bookmarks/index";
 import Definition from "./components/Definition/index";
 import { Grid } from "@mui/material";
 import { useState, useEffect } from "react";
+
 const App = () => {
-  const [bookmarks, setBookmarks] = useState({});
+  const [bookmarks, setBookmarks] = useState(
+    JSON.parse(localStorage.getItem("bookmarks")) || {}
+  );
+
+  useEffect(() => {
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   const addBookmark = (word, definitions) =>
     setBookmarks((oldBookmarks) => ({
