@@ -27,8 +27,6 @@ const Definition = () => {
   const [audio, setAudio] = useState(null);
   const theme = useTheme();
 
-  console.log(definitions);
-
   useEffect(() => {
     const fetchDefinition = async () => {
       try {
@@ -37,13 +35,13 @@ const Definition = () => {
         );
         setDefinitions(resp.data);
         setLoading(false);
-        const phonetics = resp.data[0].phonetics
-        if(!phonetics.length) return;
-        const url = phonectics[0].audio.replace('//ssl','https://')
-        setAudio(new Audio(url))
 
+        const phonetics = resp.data[0].phonetics;
+        if (!phonetics.length) return;
+        const url = phonectics[0].audio.replace("//ssl", "https://ssl");
+        setAudio(new Audio(url));
       } catch (error) {
-        setExist();
+        setExist(false);
       }
     };
     fetchDefinition();
@@ -68,7 +66,6 @@ const Definition = () => {
         <CircularProgress />
       </Box>
     );
-
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
@@ -96,16 +93,19 @@ const Definition = () => {
         <Typography sx={{ textTransform: "capitalize", mt: 2 }} variant="h5">
           {word}
         </Typography>
-        <IconButton
-          sx={{
-            borderRadius: 2,
-            p: 2,
-            color: "#fff",
-            background: (theme) => theme.palette.pink,
-          }}
-        >
-          <PlayIcon />
-        </IconButton>
+        {audio && (
+          <IconButton
+            onClick={() => audio.play()}
+            sx={{
+              borderRadius: 2,
+              p: 2,
+              color: "#fff",
+              background: (theme) => theme.palette.pink,
+            }}
+          >
+            <PlayIcon />
+          </IconButton>
+        )}
       </Stack>
 
       {definitions.map((def, idx) => (
@@ -114,7 +114,7 @@ const Definition = () => {
 
           {def.meanings.map((meaning) => (
             <Box
-              key={meaning.partOfSpeech}
+              key={Math.random()}
               sx={{
                 boxShadow: "Opx 10px 25px rgba(0, 0, 0, 0.5)",
                 backgroundColor: "#fff",
@@ -135,7 +135,7 @@ const Definition = () => {
                   sx={{ my: 1 }}
                   color="GrayText"
                   variant="body2"
-                  key={definition}
+                  key={definition.definition}
                 >
                   {meaning.definitions.length > 1 && `${idx + 1}. `}
                   {definition.definition}
