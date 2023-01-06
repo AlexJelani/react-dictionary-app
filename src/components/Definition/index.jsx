@@ -63,6 +63,7 @@ const Definition = () => {
       </Box>
     );
 
+
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
