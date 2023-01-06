@@ -37,6 +37,11 @@ const Definition = () => {
         );
         setDefinitions(resp.data);
         setLoading(false);
+        const phonetics = resp.data[0].phonetics
+        if(!phonetics.length) return;
+        const url = phonectics[0].audio.replace('//ssl','https://')
+        setAudio(new Audio(url))
+
       } catch (error) {
         setExist();
       }
