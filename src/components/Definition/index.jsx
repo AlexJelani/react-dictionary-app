@@ -10,10 +10,10 @@ import {
 } from "@mui/material";
 import {
   ArrowBack as BackIcon,
-  Bookmark as BookmarkIcon,
+  BookmarkBorder as BookmarkIcon,
   PlayArrow as PlayIcon,
+  Bookmark as BookmarkedIcon,
 } from "@mui/icons-material";
-import { border as BookmarkedIcon } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, Fragment } from "react";
 import axios from "axios";
@@ -67,10 +67,10 @@ const Definition = () => {
     <>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <IconButton onClick={() => goBack(-1)}>
-          <BackIcon sx={{color:'black'}} />
+          <BackIcon sx={{ color: "black" }} />
         </IconButton>
         <IconButton>
-          <BookmarkIcon sx={{color:'black'}}  />
+          <BookmarkIcon sx={{ color: "black" }} />
         </IconButton>
       </Stack>
       <Stack
@@ -87,7 +87,7 @@ const Definition = () => {
           borderRadius: 2,
         }}
       >
-        <Typography sx={{ textTransform: "capitalize",mt:2 }} variant="h5">
+        <Typography sx={{ textTransform: "capitalize", mt: 2 }} variant="h5">
           {word}
         </Typography>
         <IconButton
