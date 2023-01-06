@@ -24,6 +24,7 @@ const Definition = () => {
   const [definitions, setDefinitions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [exist, setExist] = useState(true);
+  const [audio, setAudio] = useState(null);
   const theme = useTheme();
 
   console.log(definitions);
@@ -62,7 +63,6 @@ const Definition = () => {
         <CircularProgress />
       </Box>
     );
-
 
   return (
     <>
