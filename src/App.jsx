@@ -7,8 +7,23 @@ import Home from "./components/Home/index";
 import Bookmarks from "./components/Bookmarks/index";
 import Definition from "./components/Definition/index";
 import { Grid } from "@mui/material";
-
+import { useState, useEffect } from "react";
 const App = () => {
+  const [bookmarks, setBookmarks] = useState({});
+
+  const addBookmark = (word, definitions) =>
+    setBookmarks((oldBookmarks) => ({
+      ...oldBookmarks,
+      [word]: definitions,
+    }));
+
+  const removeBookmark = (word) =>
+    setBookmarks((oldBookmarks) => {
+      const temp = { ...oldBookmarks };
+      delete temp[word];
+      return temp;
+    });
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -22,7 +37,13 @@ const App = () => {
                 <Route
                   exact
                   path="/search/:word"
-                  element={<Definition />}
+                  element={
+                    <Definition
+                      bookmarks={bookmarks}
+                      addBookmark={addBookmark}
+                      removeBookmark={removeBookmark}
+                    />
+                  }
                 ></Route>
               </Routes>
             </Router>

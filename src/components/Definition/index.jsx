@@ -7,6 +7,7 @@ import {
   CircularProgress,
   useTheme,
   Button,
+  styled,
 } from "@mui/material";
 import {
   ArrowBack as BackIcon,
@@ -18,7 +19,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, Fragment } from "react";
 import axios from "axios";
 
-const Definition = () => {
+const AlignCenterBox = styled(Box)(({ theme }) => ({
+  ...theme.mixins.alignInTheCenter,
+}));
+
+const isBookmarked = Object.keys(bookmarks).includes(word);
+
+const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
   const { word } = useParams();
   const goBack = useNavigate();
   const [definitions, setDefinitions] = useState([]);
@@ -49,7 +56,7 @@ const Definition = () => {
 
   if (!exist)
     return (
-      <Box sx={{ ...theme.mixins.alignInTheCenter }}>
+      <AlignCenterBox>
         <Typography>Word not found</Typography>
         <Button
           variant="contained"
@@ -58,13 +65,13 @@ const Definition = () => {
         >
           Go back
         </Button>
-      </Box>
+      </AlignCenterBox>
     );
   if (loading)
     return (
-      <Box sx={{ ...theme.mixins.alignInTheCenter }}>
+      <AlignCenterBox>
         <CircularProgress />
-      </Box>
+      </AlignCenterBox>
     );
   return (
     <>
@@ -72,8 +79,16 @@ const Definition = () => {
         <IconButton onClick={() => goBack(-1)}>
           <BackIcon sx={{ color: "black" }} />
         </IconButton>
-        <IconButton>
-          <BookmarkIcon sx={{ color: "black" }} />
+        <IconButton
+          onClick={() =>
+            isBookmarked ? removeBookmark(word) : addBookmark(word, definitions)
+          }
+        >
+          {isBookmarked ? (
+            <BookmarkedIcon sx={{ color: "black" }} />
+          ) : (
+            <BookmarkIcon sx={{ color: "black" }} />
+          )}
         </IconButton>
       </Stack>
       <Stack
