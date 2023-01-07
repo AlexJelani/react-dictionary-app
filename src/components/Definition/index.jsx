@@ -23,7 +23,7 @@ const AlignCenterBox = styled(Box)(({ theme }) => ({
   ...theme.mixins.alignInTheCenter,
 }));
 
-const isBookmarked = Object.keys(bookmarks).includes(word)
+// const isBookmarked = Object.keys(bookmarks).includes(word);
 
 const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
   const { word } = useParams();

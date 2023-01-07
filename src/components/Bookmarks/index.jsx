@@ -1,11 +1,36 @@
+import { Stack, IconButton, Typography, Box } from "@mui/material";
+import { ArrowBack as BackIcon } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
-
-const Bookmarks = () => {
+const Bookmarks = ({ bookmarks }) => {
   return (
-    <div>
-      Bookmarks
-    </div>
-  )
-}
+    <>
+      <Stack sx={{mb:2}} direction="row" alignItems="center">
+        <IconButton sx={{ color: "black", mr: 1 }}>
+          <BackIcon />
+        </IconButton>
+        <Typography variant="h6">Bookmark</Typography>
+      </Stack>
+      {Object.keys(bookmarks).map((b) => (
+        <Box key={b} to={`/search/${b}`} component={Link}
+          sx={{
+            p: 2,
+            cursor: "pointer",
+            backgroundColor: "white",
+            borderRadius: 1,
+            textTransform: "capitalize",
+            mb: 2,
+            fontweight:800,
+            display:'block',
+            color:'black',
+            textDecoration:'none
+            '
+          }}>
+          {b}
+        </Box>
+      ))}
+    </>
+  );
+};
 
-export default Bookmarks
+export default Bookmarks;

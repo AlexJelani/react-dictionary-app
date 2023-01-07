@@ -10,7 +10,7 @@ import {
   Bookmark as BookmarkIcon,
 } from "@mui/icons-material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Home = () => {
   const [word, setWord] = useState("");
@@ -57,7 +57,10 @@ const Home = () => {
           />
         </form>
       </Box>
+
       <IconButton
+        to="/bookmarks"
+        component={Link}
         sx={{
           backgroundColor: "red",
           borderRadius: 2,
