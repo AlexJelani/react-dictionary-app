@@ -21,7 +21,7 @@ const Home = () => {
     e.preventDefault();
     const trimmedWord = word.trim().toLowerCase();
     if (!trimmedWord || trimmedWord.split(" ").length > 1) return;
-    history(`/search/${word}`);
+    history(`/search/${trimmedWord}`);
   };
   return (
     <Box sx={{ ...theme.mixins.alignInTheCenter }}>
